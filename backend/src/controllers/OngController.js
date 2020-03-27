@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const generateUniqueId = require('../utils/generateUniqueId');
 const connection = require('../database/connection');
 
 
@@ -12,7 +12,7 @@ module.exports = {
     async create(req, res) {
         const { name, email, whatsapp, city, uf } = req.body;
     
-        const id = crypto.randomBytes(4).toString('HEX');
+        const id = generateUniqueId();
     
         await connection('ong').insert({
             id,
@@ -29,7 +29,8 @@ module.exports = {
 
     // Função extra para deletar ONG's e consequentemente todos os casos dela.
 
-    async delete(req, res) {
+    /**
+     * async delete(req, res) {
         const {id} = req.params;
         const ong_id = req.headers.authorization;
 
@@ -50,5 +51,7 @@ module.exports = {
         .delete();
 
         return res.status(204).send();
-    }
+         }
+     */
+    
 };

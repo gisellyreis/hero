@@ -6,7 +6,7 @@ module.exports = {
 
         const [count] = await connection('incidents')
         .count();
-       // console.log(count);
+       // console.log(count); 
 
         const incidents = await connection('incidents')
         .join('ong', 'ong.id', '=', 'incidents.ong_id')
@@ -58,4 +58,25 @@ module.exports = {
 
         return res.status(204).send();
     }
+
+    // Função extra para atualizar dados de um caso
+    // Implementado apenas para teste
+
+    /**
+     * 
+     * async update(req, res) {
+					const {id} = req.params;
+					const { ong_id } = req.body;
+
+					await connection('incidents')
+					.where('id', id)
+					.update({
+							ong_id,
+					});
+					
+					return res.json({ id });
+        }
+     *
+     */
+    
 };

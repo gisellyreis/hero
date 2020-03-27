@@ -9,12 +9,14 @@ routes.post('/sessions', SessionController.create);
 
 routes.get('/ongs', OngController.index);
 routes.post('/ongs', OngController.create);
+routes.delete('/ongs/:id', OngController.delete);
 
 routes.get('/profile', ProfileController.index);
 
 routes.get('/incidents', IncidentController.index);
 routes.post('/incidents', IncidentController.create);
 routes.delete('/incidents/:id', IncidentController.delete);
+// routes.get('/incidents/:id', IncidentController.update);
 
 
 module.exports = routes;
